@@ -1,0 +1,21 @@
+{% extends 'snippets/base.html' %}
+
+{% block body_block %}
+
+    <div class="jumbotron">
+        {% if registered %}
+            <h1>회원가입이 완료되었습니다.!</h1>
+        {% else %}
+            <h1>회원가입</h1>
+            <h3>각 항목을 정확하게 입력하세요:</h3>
+
+            <form method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ user_form.as_p }}
+                {{ profile_form.as_p }}
+                <input type="submit" name="" value="가입하기">
+            </form>
+        {% endif %}
+
+    </div>
+{% endblock %}
